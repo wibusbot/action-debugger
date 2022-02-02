@@ -1,0 +1,16 @@
+name: debugger-action
+on:
+  push:
+    branches:
+      - main
+  watch:
+    types: [started]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Touch File
+        run: touch /tmp/keepalive
+      - uses: actions/checkout@v2
+      - name: Setup Debug Session
+        uses: csexton/debugger-action@master
